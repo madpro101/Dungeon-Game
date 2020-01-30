@@ -34,3 +34,13 @@ while True:
      print("You can move {}") # fill with available moves
      print("Enter QUIT to quit game")
      
+     move = input("> " ).upper()
+     
+     if move == "QUIT":
+          break
+     
+     # Good move? Change player position
+     # Bad move? Do not change player position
+     # On the door? They win 
+     
+     
