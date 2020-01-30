@@ -28,4 +28,9 @@ def get_location():
     
 return monster, player, door
      
-
+while True:
+     print("Welcome to the Dungeon. A game proudly made by Dveelopers for Developers")
+     print("You are currently in room {}") #fill in position where player is in 
+     print("You can move {}") # fill with available moves
+     print("Enter QUIT to quit game")
+     
