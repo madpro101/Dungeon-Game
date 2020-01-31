@@ -1,5 +1,5 @@
 import random
-# To do 30 January 2020(Nhasi)
+# To do by the time i finish making the game
 
 # Draw Grid 
 # Pick Random Location for player
@@ -26,8 +26,9 @@ def get_location():
      door = None
      player = None
     
-return monster, player, door
-     
+	return monster, player, door
+
+# Game loop
 while True:
      print("Welcome to the Dungeon. A game proudly made by Dveelopers for Developers")
      print("You are currently in room {}") #fill in position where player is in 
