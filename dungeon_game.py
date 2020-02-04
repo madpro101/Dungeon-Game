@@ -17,11 +17,12 @@ CELLS = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0),
          (0, 1), (1, 1), (2, 1), (3, 1), (4, 1), 
          (0, 2), (1, 2), (2, 2), (3, 2), (4, 2), 
          (0, 3), (1, 3), (2, 3), (3, 3), (4, 3), 
-         (0, 4), (1, 4), (2, 4), (3, 4), (4, 4),
-         ]
+         (0, 4), (1, 4), (2, 4), (3, 4), (4, 4)]
+
 # clear screen function 
 def clear_screen():
      os.system('cls' if os.name =='nt' else 'clear')
+     
 # Function to get the locations 
 def get_location(): 
 	return random.sample(CELLS, 3)
@@ -66,15 +67,18 @@ def draw_map(player):
           else:
                line_end = "\n"
                if cell == player:
-                    output = tile.format("{}|")
+                    output = tile.format("X|")
                else:
-                    output = tile.format("_|")
-                    
+                    output = tile.format("_|")    
           print(output, end = line_end)
+          
 def game_loop():
      
      monster, door, player = get_location()  
-     while True:
+     playing = True
+     
+     while playing:
+          clear_screen()
           draw_map(player)
           valid_moves= get_moves(player)
           print("You are currently in room {}".format(player)) #fill in position where player is in 
@@ -87,16 +91,17 @@ def game_loop():
                break
           if move in valid_moves:
                player = move_player(player, move)
-               if player == 'monster':
-                    print("\n ** Ooops the angry potato and vegy eating monster got you**\n")
-                    
-                    break
-               if player== 'door':
+               if player == monster:
+                    print("\n ** Ooops the angry potato and vegy eating monster got you**\n")  
+                    playing = False
+               if player == door:
                     print("**\n hurray you won. Come get your prize**\n")
-                    break
+                    playing = False
           else:
                input("\n**You can't go there**\n")
-          clear_screen()
+     else:
+          if input("Do you want to play again ? [Y/n]").lower() != "n":
+               game_loop()    
              
 
 clear_screen
